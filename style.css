@@ -1,0 +1,36 @@
+.navbar{
+    background-color: #50C878;
+    width: 100%;
+}
+.yourmsg{
+    background-color: #50C878;
+    border-radius: 10px;
+    padding: 10px;
+}
+.botmsg{
+    border-radius: 10px;
+    width: auto;
+    padding: 10px;
+    border: 2px solid #50C878;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;    
+}
+.messages{
+    margin-top: 80px;
+}
+.footerbox{
+    background-color: #50C878;
+    position: fixed;
+    bottom: 0%;
+    width: 100%;
+}
+.msgbox{
+    background-color: lightgreen !important; 
+}
