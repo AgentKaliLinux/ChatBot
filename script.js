@@ -23,7 +23,7 @@ const chatBot = async () => {
 	div2.appendChild(div3);
 	div3.appendChild(p);
 
-	
+
 	// console.log(userMessage);
 	const url = 'https://lemurbot.p.rapidapi.com/chat';
 	const options = {
@@ -35,7 +35,7 @@ const chatBot = async () => {
 		},
 		body: JSON.stringify({
 			message: userMessage,
-			bot: 'Jaun	',
+			bot: 'dilly',
 			client: 'd531e3bd-b6c3-4f3f-bb58-a6632cbed5e2'
 		})
 	};
