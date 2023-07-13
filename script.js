@@ -23,42 +23,48 @@ const chatBot = async () => {
 	div2.appendChild(div3);
 	div3.appendChild(p);
 
-
-	console.log(userMessage);
-	const url = `https://ai-chatbot.p.rapidapi.com/chat/free?message=${userMessage}&uid=user1`;
+	
+	// console.log(userMessage);
+	const url = 'https://lemurbot.p.rapidapi.com/chat';
 	const options = {
-		method: 'GET',
+		method: 'POST',
 		headers: {
+			'content-type': 'application/json',
 			'X-RapidAPI-Key': 'd96a4e6ea5msh2ffd62a597d5b41p1c88e1jsn4ca07831f676',
-			'X-RapidAPI-Host': 'ai-chatbot.p.rapidapi.com'
-		}
+			'X-RapidAPI-Host': 'lemurbot.p.rapidapi.com'
+		},
+		body: JSON.stringify({
+			message: userMessage,
+			bot: 'Jaun	',
+			client: 'd531e3bd-b6c3-4f3f-bb58-a6632cbed5e2'
+		})
 	};
-try {
+	try {
 
-	const response = await fetch(url, options);
-	const resultJSON = await response.json();
-	const result = await resultJSON.chatbot['response'];
-	console.log(result);
+		const response = await fetch(url, options);
+		const resultJSON = await response.json();
+		const result = await resultJSON.data.conversation['output'];
+		// console.log(result);
 
 
-	let botMsg = document.createElement('div');
-	let botmsgDiv = document.createElement('div');
-	let botmsgDdiv2 = document.createElement('div');
-	let botmsgP = document.createElement('p');
-	botMsg.className = "botMsg";
-	botmsgDiv.className = "row col-5 m-2 mt-3";
-	botmsgDdiv2.className = "botmsg";
-	botmsgP.className = "msg m-2";
-	botmsgP.textContent = "Loading....."
-	botmsgP.textContent = result;
-	textBody.appendChild(botMsg)
-	botMsg.appendChild(botmsgDiv);
-	botmsgDiv.appendChild(botmsgDdiv2);
-	botmsgDdiv2.appendChild(botmsgP);
+		let botMsg = document.createElement('div');
+		let botmsgDiv = document.createElement('div');
+		let botmsgDdiv2 = document.createElement('div');
+		let botmsgP = document.createElement('p');
+		botMsg.className = "botMsg";
+		botmsgDiv.className = "row col-5 m-2 mt-3 mb-5";
+		botmsgDdiv2.className = "botmsg";
+		botmsgP.className = "msg m-2";
+		botmsgP.textContent = "Loading....."
+		botmsgP.textContent = result;
+		textBody.appendChild(botMsg)
+		botMsg.appendChild(botmsgDiv);
+		botmsgDiv.appendChild(botmsgDdiv2);
+		botmsgDdiv2.appendChild(botmsgP);
 
-} catch (error) {
-	console.error(error);
-}
+	} catch (error) {
+		console.error(error);
+	}
 
 }
 
