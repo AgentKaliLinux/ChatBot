@@ -1,3 +1,7 @@
+*{
+    font-family: math;
+}
+
 .navbar{
     background-color: #50C878;
     width: 100%;
@@ -33,4 +37,8 @@ body {
 }
 .msgbox{
     background-color: lightgreen !important; 
+}
+
+#botLogo {
+    width: 80px;
 }
