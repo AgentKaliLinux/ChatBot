@@ -1,4 +1,3 @@
-
 const chatBot = async () => {
 
 	let input = document.querySelector('#userMsg');
@@ -23,6 +22,25 @@ const chatBot = async () => {
 	div2.appendChild(div3);
 	div3.appendChild(p);
 
+	let botMsg = document.createElement('div');
+	let botmsgDiv = document.createElement('div');
+	let img = document.createElement('img');
+	let botmsgDdiv2 = document.createElement('div');
+	let botmsgP = document.createElement('p');
+	botMsg.className = "botMsg";
+	botmsgDiv.className = "row col-5 m-2 mt-3 ";
+	img.src = 'Assets/favicon.png'
+	img.id = 'botLogo';
+	botmsgDdiv2.className = "botmsg";
+	botmsgP.className = "msg m-2";
+	botmsgP.textContent = "Thinking....."
+	botmsgDdiv2.style.marginTop = '10px'
+	textBody.appendChild(botMsg)
+	botMsg.appendChild(botmsgDiv);
+	botmsgDiv.appendChild(img);
+	botmsgDiv.appendChild(botmsgDdiv2);
+	botmsgDdiv2.appendChild(botmsgP);
+
 
 	const url = 'https://lemurbot.p.rapidapi.com/chat';
 	const options = {
@@ -44,24 +62,14 @@ const chatBot = async () => {
 		const resultJSON = await response.json();
 		const result = await resultJSON.data.conversation['output'];
 
-
-		let botMsg = document.createElement('div');
-		let botmsgDiv = document.createElement('div');
-		let botmsgDdiv2 = document.createElement('div');
-		let botmsgP = document.createElement('p');
-		botMsg.className = "botMsg";
-		botmsgDiv.className = "row col-5 m-2 mt-3 mb-5";
-		botmsgDdiv2.className = "botmsg";
-		botmsgP.className = "msg m-2";
-		botmsgP.textContent = "Loading....."
 		botmsgP.textContent = result;
-		textBody.appendChild(botMsg)
-		botMsg.appendChild(botmsgDiv);
-		botmsgDiv.appendChild(botmsgDdiv2);
-		botmsgDdiv2.appendChild(botmsgP);
 
 	} catch (error) {
-		console.error(error);
+
+		newError = new Error('Something Is Wrong!, Try Again Later...')
+		botmsgP.textContent = newError;
+		botmsgP.style.color = 'red';
+
 	}
 
 }
@@ -69,5 +77,4 @@ const chatBot = async () => {
 
 
 
-$('#enterMsg').click(chatBot)
-
+$('#enterMsg').click(chatBot);
