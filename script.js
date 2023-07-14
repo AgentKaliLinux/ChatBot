@@ -24,7 +24,6 @@ const chatBot = async () => {
 	div3.appendChild(p);
 
 
-	// console.log(userMessage);
 	const url = 'https://lemurbot.p.rapidapi.com/chat';
 	const options = {
 		method: 'POST',
@@ -44,7 +43,6 @@ const chatBot = async () => {
 		const response = await fetch(url, options);
 		const resultJSON = await response.json();
 		const result = await resultJSON.data.conversation['output'];
-		// console.log(result);
 
 
 		let botMsg = document.createElement('div');
@@ -73,4 +71,3 @@ const chatBot = async () => {
 
 $('#enterMsg').click(chatBot)
 
-// {"chatbot":{"message":"Hello","response":"Hi, my friend, what can I do for you today?"}}
